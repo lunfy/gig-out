@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+
+  <body>
+
+    <header>
+        <%- include('../partials/header') %> 
+    </header>
+
+    <main>
+
+        <div class="field">
+            <div class="has-text-centered mt-6">
+                <img src="img/logo/Gig Out!-logos.jpeg" alt="gig-out-logo" class="img-responsive">
+            </div>
+
+            <div id="error">
+                <%= errMsg %> 
+            </div>
+
+            <form id="register-form" class="mt-5" method="POST" action="/register">
+
+                <div class="mb-3">
+                    <div class="columns">
+
+                        <div class="column has-text-right">
+                            <label for="firstname" class="form-label">First Name:</label>
+                        </div>
+
+                        <div class="column has-text-left">
+                            <input type="text" class="form-control" id="firstname" name="firstname">
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <div class="mb-3">
+                    <div class="columns">
+
+                        <div class="column has-text-right">
+                            <label for="lastname" class="form-label">Last Name:</label>
+                        </div>
+
+                        <div class="column has-text-left">
+                            <input type="text" class="form-control" id="lastname" name="lastname">
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <div class="mb-3">
+                    <div class="columns">
+
+                        <div class="column has-text-right">
+                            <label for="email" class="form-label">Email:</label>
+                        </div>
+
+                        <div class="column has-text-left">
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <div class="mb-3">
+                    <div class="columns">
+
+                        <div class="column has-text-right">
+                            <label for="password" class="form-label">Password:</label>
+                        </div>
+
+                        <div class="column has-text-left">
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="columns">
+    
+                            <div class="column has-text-right">
+                                <label for="cpassword" class="form-label">Confirm Password:</label>
+                            </div>
+    
+                            <div class="column has-text-left">
+                                <input type="password" class="form-control" id="cpassword" name="cpassword">
+                            </div>
+    
+                        </div>
+
+                <div class="has-text-centered">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+
+            </form>
+        </div>
+        
+    </main>
+
+  <footer>
+    <!-- Insert foother partials here -->
+  </footer>
+
+  <!-- possible some script partials here -->
+  <script> <%- include('../../public/scripts/navbar.js') %> </script>
+
+  </body>
+</html>

@@ -25,7 +25,11 @@ app.get('/', (req,res) => {
     res.send('Welcome!')
 })
 
+app.get('/register', userController.showRegistrationForm)
+app.post('/register', userController.register)
+
 app.get('/login', userController.showLoginForm)
+app.post('/login', userController.login)
 
 app.listen(port, async () => {
     try {

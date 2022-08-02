@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 
 const userController = require('./controllers/users/user_controller')
+const pagesController = require('./controllers/pages/pages_controller')
+const authMiddleware = require('./middlewares/auth_middleware')
 
 const app = express()
 const port = 3000
@@ -20,9 +22,11 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false, httpOnly: false }
 }))
+app.use(authMiddleware.setAuthUserVar)
+
 
 app.get('/', (req,res) => {
-    res.send('Welcome!')
+    res.redirect('/main')
 })
 
 app.get('/register', userController.showRegistrationForm)
@@ -30,6 +34,12 @@ app.post('/register', userController.register)
 
 app.get('/login', userController.showLoginForm)
 app.post('/login', userController.login)
+
+app.post('/main/logout', userController.logout)
+
+app.get('/main', pagesController.showMainPage)
+
+app.get('/profile', authMiddleware.isAuthenticated, userController.showProfile)
 
 app.listen(port, async () => {
     try {

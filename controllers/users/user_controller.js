@@ -65,11 +65,11 @@ module.exports = {
         }
 
         const validatedResults = validationResults.value
-        let user = null
+        let foundUser = null
 
         try {
-            user = await userModel.findOne({email: validatedResults.email})
-            if (!user) {
+            foundUser = await userModel.findOne({email: validatedResults.email})
+            if (!foundUser) {
                 res.render('pages/login', {
                     errMsg
                 })
@@ -83,7 +83,7 @@ module.exports = {
         }
         
         // using bcrypt to compare given password with one stored as hash in DB
-        const pwMatch = await bcrypt.compare(validatedResults.password, user.password)
+        const pwMatch = await bcrypt.compare(validatedResults.password, foundUser.password)
         if (!pwMatch) {
             res.render('pages/login', {
                 errMsg
@@ -101,7 +101,7 @@ module.exports = {
             }
         })
 
-        req.session.user = user.email
+        req.session.user = foundUser
         req.session.save(function (err) {
             if (err) {
                 res.render('pages/login', {
@@ -112,5 +112,16 @@ module.exports = {
         })
 
         res.redirect('/main')
+    },
+
+    showProfile: (req,res) => {
+        res.render('pages/profile')
+    },
+
+    logout: (req,res) => {
+        res.locals.authUser = null
+        req.session.destroy(() => {
+            res.redirect('/main')
+        })
     }
 }

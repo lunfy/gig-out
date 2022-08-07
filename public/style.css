@@ -12,6 +12,16 @@
     justify-content: center;
 }
 
+.columns {
+    display: flex;
+}
+
 #error {
     color: red;
+}
+
+.posting {
+    border-style: solid;
+    width: 50%;
+    margin-left: 1em;
 }

@@ -1,12 +1,43 @@
 const mongoose = require('mongoose')
 
 const postingSchema = new mongoose.Schema({
-    authorId: {
+
+    title: {
         type: String,
         required: true
     },
 
-    title: {
+    type: {
+        type: String,
+        required: true
+    },
+
+    workArea: {
+        type: String,
+        required: true
+    },
+
+    workDate: {
+        type: Date,
+        required: true
+    },
+
+    messageBody: {
+        type: String,
+        required: true
+    },
+
+    paymentBy: {
+        type: String,
+        required: true
+    },
+
+    amount: {
+        type: String,
+        required: true
+    },
+
+    authorId: {
         type: String,
         required: true
     },
@@ -17,11 +48,6 @@ const postingSchema = new mongoose.Schema({
     },
 
     authorLname: {
-        type: String,
-        required: true
-    },
-
-    messageBody: {
         type: String,
         required: true
     },

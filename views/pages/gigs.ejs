@@ -11,16 +11,18 @@
     </header>
 
     <main>
-    <% gigs.forEach(item => { %>
-        <div class="tile">
-            <h2 class="title"><%= item.title %></h2>
-            <p>Poster: <%= item.authorFname %> <%= item.authorLname %> </p>
-            <br>
-            <p><%= item.messageBody %></p>
-            <br>
-            <p class="p-date"><%= item.datePosted %></p>
-        </div>
-    <% }) %>
+      <div class="tile is-ancestor mt-5" id="tile-cont">
+          <% gigs.forEach(item => { %>
+          <div class="tile is-vertical gig-tiles"><a href="/gigs/<%= item._id %>">
+              <h2 class="title"> <%= item.title %></h2>
+              <p class="subtitle">Poster: <%= item.authorFname %> <%= item.authorLname %> </p>
+              <div class="content">
+                  <%= item.messageBody %>
+              </div>
+              <p class="p-date"><%= item.datePosted %></p>
+          </a></div>
+          <% }) %>
+      </div>
     </main>
 
   <footer>

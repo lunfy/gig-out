@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
 const userModel = require('../../models/users/user')
 const userValidators = require('../../validators/users')
-const errMsg = 'Login Error: Username or password incorrect'
+let errMsg = 'Login Error: Username or password incorrect'
 
 module.exports = {
 

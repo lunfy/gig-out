@@ -12,17 +12,8 @@
 
     <main>
 
-       <article>
-        <% for (let i=0; i < 3; i++) { %>
-          <section class="section posting mb-5">
-            <h2 class="title"><%= postings[i].title %></h2>
-            <p>Poster: <%= postings[i].authorFname %> <%= postings[i].authorLname %> </p>
-            <br>
-            <p><%= postings[i].messageBody %></p>
-            <br>
-            <p class="p-date"><%= postings[i].datePosted %></p>
-          </section>
-        <% } %>
+       <article class="mt-4">
+        
        </article>
 
        <aside>...</aside>
@@ -30,7 +21,7 @@
     </main>
 
   <footer>
-    <!-- Insert footer partials here -->
+    <%- include('../partials/footer') %>
   </footer>
 
   <!-- possible some script partials here -->

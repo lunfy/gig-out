@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         <img src="img/logo/animate-logo.gif" width="112" height="28">
@@ -17,8 +17,12 @@
           Home
         </a>
   
-        <a class="navbar-item">
+        <a class="navbar-item" href="/gigs">
           Gig List
+        </a>
+
+        <a class="navbar-item" href="/newgig">
+          Post a Job
         </a>
   
         <div class="navbar-item has-dropdown is-hoverable">
@@ -44,7 +48,7 @@
       <% if (authUser) { %>
         <div class="navbar-end">
           <div class="navbar-item">
-            Hello&nbsp;<strong><%= authUser.firstName %></strong>!
+            Hello&nbsp;<strong><span style="color:white"> <%= authUser.firstName %></style></strong>!
           </div>
           <div class="navbar-item">
             <div class="buttons">

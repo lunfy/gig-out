@@ -6,10 +6,11 @@ const session = require('express-session')
 
 const userController = require('./controllers/users/user_controller')
 const pagesController = require('./controllers/pages/pages_controller')
+const gigController = require('./controllers/gigs/gig_controller')
 
 const authMiddleware = require('./middlewares/auth_middleware')
-const Postings = require('./models/gigs/gigs')
-const seedPostings = require('./seed')
+const Gig = require('./models/gigs/gigs')
+const seedGig = require('./seed')
 
 const app = express()
 const port = 3000
@@ -45,12 +46,15 @@ app.get('/main', pagesController.showMainPage)
 app.get('/profile', authMiddleware.isAuthenticated, userController.showProfile)
 
 app.get('/gigs', authMiddleware.isAuthenticated, pagesController.showGigs)
-app.get('/gigs/:id', authMiddleware.isAuthenticated, )
+app.get('/gigs/:id', authMiddleware.isAuthenticated, gigController.showIndGig)
+
+app.get('/newgig', authMiddleware.isAuthenticated, gigController.showNewGigForm)
+app.post('/newgig', authMiddleware.isAuthenticated, gigController.createGig)
 
 app.get('/seed', (req,res) => {
     const seedDB = async () => {
-        await Postings.deleteMany({})
-        await Postings.insertMany(seedPostings)
+        await Gig.deleteMany({})
+        await Gig.insertMany(seedGig)
         console.log('successful seeding')
     }
     seedDB()

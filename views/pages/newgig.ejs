@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+
+  <body>
+
+    <header>
+        <%- include('../partials/header') %> 
+    </header>
+
+    <main>
+
+        <div class="section gig-form">
+
+            <form id="new-gig-form" method="POST" action="/newgig">
+
+                <div class="field">
+                    <label class="label">Title</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Job Title" id="title" name="title">
+                    </div>
+                </div>
+
+                <div class="columns">
+
+                    <div class="field column">
+                        <label class="label">Type</label>
+                        <div class="control">
+                            <div class="select">
+                                <select id="type" name="type">
+                                    <option></option>
+                                    <option>Part-Time</option>
+                                    <option>Ad-Hoc</option>
+                                    <option>One-Time</option>
+                                    <option>Contract</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field column">
+                        <label class="label">Work Area</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select id="workarea" name="workarea">
+                                        <option></option>
+                                        <option>Central</option>
+                                        <option>North</option>
+                                        <option>South</option>
+                                        <option>East</option>
+                                        <option>West</option>
+                                        <option>Islandwide</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+                
+                    <div class="field column">
+                        <label class="label">Date of Work</label>
+                            <div class="control">
+                                <input class="input" type="date" id="workdate" name="workdate">    
+                            </div>
+                    </div>
+
+                    <div class="column"></div>
+                    <div class="column"></div>
+                
+                </div>
+                
+                <div class="field">
+                    <label class="label">Job Description</label>
+                    <div class="control">
+                        <textarea class="textarea" id="jd" name="jd" placeholder="Enter job description here..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="field columns">
+
+                    <div class="field column">
+                        <label class="label">Payment By</label>
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="hidden" id="cashval" value="0" name="cashval">
+                                <input type="checkbox" id="cash" name="cash" value="cash">
+                                Cash
+                            </label>
+
+                            <label class="checkbox">
+                                <input type="hidden" id="paynowval" value="0" name="paynowval">
+                                <input type="checkbox" id="paynow" name="paynow" value="paynow">
+                                PayNow
+                            </label>
+
+                            <label class="checkbox">
+                                <input type="hidden" id="banktransferval" value="0" name="banktransferval">
+                                <input type="checkbox" id="banktransfer" name="banktransfer" value="banktransfer">
+                                Bank Transfer
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="field column">
+                        <label class="label">SGD</label>
+                        <input class="input" type="text" placeholder="Amount" id="amount" name="amount">
+                    </div>
+
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                    <button type="submit" class="button is-link">Post</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+    </main>
+
+  <footer>
+    <!-- Insert foother partials here -->
+  </footer>
+
+  <!-- possible some script partials here -->
+  <script> <%- include('../../public/scripts/navbar.js') %> </script>
+  <script> <%- include('../../public/scripts/cbox.js') %> </script>
+
+  </body>
+</html>

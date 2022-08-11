@@ -1,1 +1,48 @@
-Hello! This is your profile!
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+
+  <body>
+
+    <header>
+        <%- include('../partials/header') %> 
+    </header>
+
+    <main>
+        <div class="tabs is-centered">
+            <ul>
+              <li class="tablinks is-active" onclick="openTab(event, 'profile')"><a>Profile</a></li>
+              <li class="tablinks" onclick="openTab(event, 'posted-gigs')"><a>Posted Gigs</a></li>
+              <li class="tablinks" onclick="openTab(event, 'applied-gigs')"><a>Applied Gigs</a></li>
+            </ul>
+          </div>
+
+          <div id="profile" class="tabcontent">
+            <h3>Profile</h3>
+            <p>Testing testing testing</p>
+          </div>
+
+          <div id="posted-gigs" class="tabcontent">
+            <h3>Posted Gigs</h3>
+            <p>Testing testing testing 1</p>
+          </div>
+
+          <div id="applied-gigs" class="tabcontent">
+            <h3>Applied Gigs</h3>
+            <p>Testing testing testing 2</p>
+          </div>
+
+    </main>
+
+  <footer>
+    <%- include('../partials/footer') %>
+  </footer>
+
+  <!-- possible some script partials here -->
+  <script> <%- include('../../public/scripts/tabs.js') %> </script>
+  <script> <%- include('../../public/scripts/navbar.js') %> </script>
+
+  </body>
+</html>

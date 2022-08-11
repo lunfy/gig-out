@@ -5,23 +5,19 @@ module.exports = {
     showMainPage: async (req,res) => {
 
         const postings = await Gig.find()
+        console.log(postings)
 
-        if (postings != null) {
-
-            res.render('pages/main', {
-                postings
-            })
-        } else {
-            res.render('pages/main', {
-                postings: null
-            })
-        }
+        res.render('pages/main', {
+            postings
+        })
+        
 
     },
     
     showGigs: async (req,res) => {
 
         const gigs = await Gig.find()
+        console.log(gigs)
 
         res.render('pages/gigs', {
             gigs

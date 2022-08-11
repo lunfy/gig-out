@@ -13,7 +13,7 @@ const Gig = require('./models/gigs/gigs')
 const seedGig = require('./seed')
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 const connStr = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@generalassembly.orbtbgf.mongodb.net/?retryWrites=true&w=majority`
 
 app.set('view engine','ejs')

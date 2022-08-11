@@ -13,7 +13,18 @@
     <main>
 
        <article class="mt-4">
-        
+        <% if (postings) { %>
+          <% for (let i=0; i<2; i++) { %>
+            <section class="section posting mb-5">
+              <h2 class="title"><a href='/gigs/<%= postings[i]._id %>'> <%= postings[i].title %> </a></h2>
+              <p>Poster: <%= postings[i].authorFname %> <%= postings[i].authorLname %> </p>
+              <br>
+              <p><%= postings[i].messageBody %></p>
+              <br>
+              <p class="p-date"><%= postings[i].datePosted %></p>
+            </section>
+         <% } %>
+        <% } %>
        </article>
 
        <aside>...</aside>

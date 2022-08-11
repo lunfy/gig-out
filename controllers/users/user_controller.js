@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
-const userModel = require('../../models/users/user')
+const Gig = require('../../models/gigs/gigs')
 const userValidators = require('../../validators/users')
+const User = require('../../models/users/user')
 let errMsg = 'Login Error: Username or password incorrect'
 
 module.exports = {
@@ -30,12 +31,13 @@ module.exports = {
 
         // create the user and store in DB
         try {
-            await userModel.create({
+            await User.create({
                 firstName: validatedResults.firstname,
                 lastName: validatedResults.lastname,
                 email: validatedResults.email,
                 password: hash,
-                accountCreated: new Date()
+                accountCreated: new Date(),
+                lastActiveAt: new Date()
             })
         } catch(err) {
             res.render('pages/register', {
@@ -68,7 +70,7 @@ module.exports = {
         let foundUser = null
 
         try {
-            foundUser = await userModel.findOne({email: validatedResults.email})
+            foundUser = await User.findOne({email: validatedResults.email})
             if (!foundUser) {
                 res.render('pages/login', {
                     errMsg
@@ -101,6 +103,16 @@ module.exports = {
             }
         })
 
+        // Update last active date
+        try {
+            const userID = await { email: foundUser.email }
+            const updateLogin = await { lastActiveAt: new Date() }
+            await User.findOneAndUpdate(userID, updateLogin, {upsert: true})
+        } catch(err) {
+            console.log('update active date error: ',err)
+        }
+        
+
         req.session.user = foundUser
         req.session.save(function (err) {
             if (err) {
@@ -114,8 +126,22 @@ module.exports = {
         res.redirect('/main')
     },
 
-    showProfile: (req,res) => {
-        res.render('pages/profile')
+    showProfile: async (req,res) => {
+        const postedGigs = await Gig.find({ authorId: res.locals.authUser._id }).exec()
+        const latestProfile = await User.findById(res.locals.authUser._id)
+        console.log(latestProfile)
+        res.render('pages/profile', {
+            user: latestProfile,
+            postedGigs
+        })
+    },
+
+    deleteAccount: async (req,res) => {
+        await User.findByIdAndDelete(res.locals.authUser._id)
+        res.locals.authUser = null
+        req.session.destroy(() => {
+            res.redirect('/main')
+        })
     },
 
     logout: (req,res) => {

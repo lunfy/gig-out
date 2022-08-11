@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const session = require('express-session')
+const methodOverride = require('method-override')
 
 const userController = require('./controllers/users/user_controller')
 const pagesController = require('./controllers/pages/pages_controller')
@@ -19,6 +20,7 @@ const connStr = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PAS
 app.set('view engine','ejs')
 
 app.use(express.urlencoded({extended: true}))
+app.use(methodOverride('_method'))
 app.use(express.static('public'))
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -44,6 +46,7 @@ app.post('/main/logout', userController.logout)
 app.get('/main', pagesController.showMainPage)
 
 app.get('/profile', authMiddleware.isAuthenticated, userController.showProfile)
+app.delete('/profile', userController.deleteAccount)
 
 app.get('/gigs', authMiddleware.isAuthenticated, pagesController.showGigs)
 app.get('/gigs/:id', authMiddleware.isAuthenticated, gigController.showIndGig)

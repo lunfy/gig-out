@@ -14,7 +14,7 @@
 
        <article class="mt-4">
         <% if (postings) { %>
-          <% for (let i=0; i<2; i++) { %>
+          <% for (let i=0; i<postings.length; i++) { %>
             <section class="section posting mb-5">
               <h2 class="title"><a href='/gigs/<%= postings[i]._id %>'> <%= postings[i].title %> </a></h2>
               <p>Poster: <%= postings[i].authorFname %> <%= postings[i].authorLname %> </p>

@@ -11,9 +11,9 @@
     </header>
 
     <main>
-      <div class="tile is-ancestor mt-5" id="tile-cont">
+      <div class="tile is-ancestor mt-5 tile-cont" id="tile-cont">
           <% gigs.forEach(item => { %>
-          <div class="tile is-vertical gig-tiles"><a href="/gigs/<%= item._id %>">
+          <div class="tile gig-tiles"><a href="/gigs/<%= item._id %>">
               <h2 class="title"> <%= item.title %></h2>
               <p class="subtitle">Poster: <%= item.authorFname %> <%= item.authorLname %> </p>
               <div class="content">

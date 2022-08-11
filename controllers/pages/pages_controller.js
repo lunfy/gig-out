@@ -4,7 +4,7 @@ module.exports = {
 
     showMainPage: async (req,res) => {
 
-        const postings = await Gig.find()
+        const postings = await Gig.find().sort('-datePosted').limit(3)
         console.log(postings)
 
         res.render('pages/main', {

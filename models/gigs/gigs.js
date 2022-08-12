@@ -55,6 +55,10 @@ const postingSchema = new mongoose.Schema({
     datePosted: {
         type: Date,
         required: true
+    },
+
+    lastUpdated: {
+        type: Date
     }
 })
 

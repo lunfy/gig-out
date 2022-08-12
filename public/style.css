@@ -6,6 +6,16 @@ body, html {
     background-size: cover;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+}
+
+aside {
+    margin: 2em 2em 3.5em 0;
+    border-style: solid;
+}
+
 .img-responsive {
     max-width: 20%;
     height: auto;
@@ -28,10 +38,18 @@ body, html {
     color: red;
 }
 
+.main-art {
+    margin: 2em;
+}
+
 .posting {
-    border-style: solid;
-    width: 50%;
-    margin-left: 1em;
+    border-radius: 25px;
+    background-color: hsla(0, 0%, 100%, 0.5);
+}
+
+.posting a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .p-date {

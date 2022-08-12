@@ -72,5 +72,20 @@ module.exports = {
         res.render('pages/show_gig', {
             indGig
         })
+    },
+
+    deleteGig: async (req,res) => {
+        const id = req.params.id
+        const user = res.locals.authUser
+
+        await Gig.findByIdAndDelete(id)
+
+        const postedGigs = await Gig.find({ authorId: res.locals.authUser._id }).exec()
+
+        res.render('pages/profile', {
+            postedGigs,
+            user,
+            deleteGig: 'true'
+        })
     }
 }

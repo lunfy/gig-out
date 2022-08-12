@@ -13,13 +13,25 @@
     <main>
         <div class="tabs is-centered">
             <ul>
-              <li class="tablinks is-active" onclick="openTab(event, 'profile')"><a>Profile</a></li>
-              <li class="tablinks" onclick="openTab(event, 'posted-gigs')"><a>Posted Gigs</a></li>
-              <li class="tablinks" onclick="openTab(event, 'applied-gigs')"><a>Applied Gigs</a></li>
+                <li <% if (deleteGig === 'true') { %>
+                    class="tablinks"
+                <% } else { %>
+                    class="tablinks is-active"
+                <% } %>onclick="openTab(event, 'profile')"><a>Profile</a></li>
+                <li <% if (deleteGig === 'true') { %>
+                    class="tablinks is-active"
+                <% } else { %>
+                    class="tablinks"
+                <% } %>onclick="openTab(event, 'posted-gigs')"><a>Posted Gigs</a></li>
+                <li class="tablinks" onclick="openTab(event, 'applied-gigs')"><a>Applied Gigs</a></li>
             </ul>
         </div>
 
-        <div id="profile" class="section tabcontent">
+        <div id="profile" class="section tabcontent" <% if (deleteGig === 'true') { %>
+            style="display: none;"
+        <% } else { %>
+            style="display: block;"
+        <% } %>>
             <h3 class="title">Profile</h3>
             <p><strong>First Name: </strong><%= user.firstName %></p>
             <p><strong>Last Name: </strong><%= user.lastName %></p>
@@ -32,7 +44,12 @@
         </div>
         
 
-        <div id="posted-gigs" class="tabcontent">
+        <div id="posted-gigs" class="section tabcontent" <% if (deleteGig === 'true') { %>
+            style="display: block;"
+        <% } else { %>
+            style="display: none;"
+        <% } %>>
+
         <h3 class="title">Your Posted Gigs</h3>
         <% postedGigs.forEach(item => { %>
             <div class="section posted-gigs">
@@ -44,6 +61,16 @@
                 <p><strong>Payment Mode: </strong><%= item.paymentBy %></p>
                 <p><strong>Amount: </strong>$<%= item.amount %></p>
                 <p><strong>Date Posted: </strong><%= item.datePosted %></p>
+                <br>
+
+                <div class="field is-grouped">
+                    <button class="button is-dark mr-2" onclick="">Edit</button>
+
+                    <form method="POST" action="/profile/<%= item._id %>?_method=DELETE">
+                        <button class="button is-danger" type="submit">Delete</button>
+                    </form>
+                </div>
+
             </div>
         <% }) %>
         

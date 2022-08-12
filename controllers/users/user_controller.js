@@ -129,10 +129,11 @@ module.exports = {
     showProfile: async (req,res) => {
         const postedGigs = await Gig.find({ authorId: res.locals.authUser._id }).exec()
         const latestProfile = await User.findById(res.locals.authUser._id)
-        console.log(latestProfile)
+        let deleteGig = ''
         res.render('pages/profile', {
             user: latestProfile,
-            postedGigs
+            postedGigs,
+            deleteGig
         })
     },
 

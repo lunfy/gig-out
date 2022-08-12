@@ -46,6 +46,7 @@ app.post('/main/logout', userController.logout)
 app.get('/main', pagesController.showMainPage)
 
 app.get('/profile', authMiddleware.isAuthenticated, userController.showProfile)
+app.delete('/profile/:id', gigController.deleteGig)
 app.delete('/profile', userController.deleteAccount)
 
 app.get('/gigs', authMiddleware.isAuthenticated, pagesController.showGigs)

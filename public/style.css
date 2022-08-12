@@ -67,8 +67,7 @@ aside {
 }
 
 .gig-tiles {
-    flex: 1 0 21%;
-    max-width: 21%;
+    flex: auto;
     padding: 1em;
     margin: 1em;
     border-radius: 25px;

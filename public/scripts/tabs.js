@@ -9,6 +9,11 @@ const openTab = (event,tabId) => {
         tablinks[i].className = tablinks[i].className.replace(' is-active', '')
     }
 
-    document.getElementById(tabId).style.display = ''
-    event.currentTarget.className += " is-active"
+    if (tabId === 'applied-gigs') {
+        document.getElementById(tabId).style.display = 'block'
+        event.currentTarget.className += " is-active"
+    } else {
+        document.getElementById(tabId).style.display = ''
+        event.currentTarget.className += " is-active"
+    }
 }

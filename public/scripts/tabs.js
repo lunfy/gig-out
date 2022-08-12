@@ -9,6 +9,6 @@ const openTab = (event,tabId) => {
         tablinks[i].className = tablinks[i].className.replace(' is-active', '')
     }
 
-    document.getElementById(tabId).style.display = 'block'
+    document.getElementById(tabId).style.display = ''
     event.currentTarget.className += " is-active"
 }

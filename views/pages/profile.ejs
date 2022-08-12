@@ -50,17 +50,18 @@
             style="display: none;"
         <% } %>>
 
-        <h3 class="title">Your Posted Gigs</h3>
+        <h3 class="title your-title is-underlined">Your Posted Gigs</h3>
         <% postedGigs.forEach(item => { %>
             <div class="section posted-gigs">
                 <p><strong>Title: </strong><%= item.title %></p>
                 <p><strong>Type: </strong><%= item.type %></p>
                 <p><strong>Area of Work: </strong><%= item.workArea %></p>
-                <p><strong>Date of Work: </strong><%= item.workDate %></p>
+                <p><strong>Date of Work: </strong><%= item.workDate.getDay()+' '+item.workDate.toLocaleString('default', {month: 'short'})+' '+item.workDate.getFullYear() %></p>
                 <p><strong>Job Description: </strong><%= item.messageBody %></p>
                 <p><strong>Payment Mode: </strong><%= item.paymentBy %></p>
                 <p><strong>Amount: </strong>$<%= item.amount %></p>
                 <p><strong>Date Posted: </strong><%= item.datePosted %></p>
+                <p><strong>Last Updated: </strong><%= item.lastUpdated %></p>
                 <br>
 
                 <div class="field is-grouped">

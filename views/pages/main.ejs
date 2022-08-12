@@ -13,21 +13,20 @@
     <main>
       <div id="art">
         <article class="main-art">
+          <h1 class="title is-underlined latest">Latest Updates</h1>
           <% if (postings) { %>
             <% for (let i=0; i<postings.length; i++) { %>
               <section class="section posting mb-5">
                 <h2 class="title"><a href='/gigs/<%= postings[i]._id %>'> <%= postings[i].title %> </a></h2>
-                <p>Poster: <%= postings[i].authorFname %> <%= postings[i].authorLname %> </p>
+                <p class="subtitle"><strong>Poster:</strong> <%= postings[i].authorFname %> <%= postings[i].authorLname %> </p>
+                <p><strong>Gig Type:</strong> <%= postings[i].type %></p>
+                <p><strong>Amount:</strong> $<%= postings[i].amount %></p>
                 <br>
-                <p><%= postings[i].messageBody %></p>
-                <br>
-                <p class="p-date"><%= postings[i].datePosted %></p>
+                <p class="p-date"><strong>Last Updated:</strong> <%= postings[i].lastUpdated %></p>
               </section>
             <% } %>
           <% } %>
         </article>
-
-        <aside>...</aside>
       </div>
         
     </main>

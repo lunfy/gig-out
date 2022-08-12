@@ -87,8 +87,6 @@ module.exports = {
         const gigId = req.params.id
         const foundGig = await Gig.findById(gigId)
 
-        console.log(gigId,foundGig)
-
         const validationResults = gigValidators.newGigValidator.validate(req.body)
 
         if (validationResults.error) {

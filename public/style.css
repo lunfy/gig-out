@@ -30,6 +30,10 @@ aside {
     justify-content: center;
 }
 
+.latest {
+    text-align: center;
+}
+
 .columns {
     display: flex;
 }
@@ -57,14 +61,18 @@ aside {
 }
 
 #tile-cont {
+    display: flex;
+    flex-wrap: wrap;
     margin: 5em;
-    width: auto;
 }
 
 .gig-tiles {
+    flex: 1 0 21%;
+    max-width: 21%;
     padding: 1em;
     margin: 1em;
-    border-style: solid;
+    border-radius: 25px;
+    background-color: hsla(0, 0%, 100%, 0.5);
 }
 
 .gig-tiles a {
@@ -85,7 +93,22 @@ aside {
 }
 
 .posted-gigs {
-    border-style: solid;
+    flex: 1 0 40%;
+    max-width: 40%;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 25px;
+    background-color: hsla(0, 0%, 100%, 0.5);
     margin: 2em;
-    width: 50%
+}
+
+#posted-gigs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.your-title {
+    flex: 1 0 100%;
+    text-align: center;
 }

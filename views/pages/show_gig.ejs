@@ -11,7 +11,24 @@
     </header>
 
     <main>
-        Hello ayam the gig <%= indGig.title %>
+      <div id="art">
+        <article class="main-art">
+          <h1 class="title is-underlined latest">Latest Updates</h1>
+          <% if (indGig) { %>
+              <section class="section posting mb-5">
+                <h2 class="title"><a href='/gigs/<%= indGig._id %>'> <%= indGig.title %> </a></h2>
+                <p class="subtitle"><strong>Poster:</strong> <%= indGig.authorFname %> <%= indGig.authorLname %> </p>
+                <p><strong>Work Date:</strong> <%= indGig.workDate.getDay()+' '+indGig.workDate.toLocaleString('default', {month: 'short'})+' '+indGig.workDate.getFullYear() %></p><p><strong>Gig Type:</strong> <%= indGig.type %></p>
+                <p><strong>Work Area:</strong> <%= indGig.workArea %></p>
+                <p><strong>Job Description:</strong> <%= indGig.messageBody%></p>
+                <p><strong>Payment via:</strong> <%= indGig.paymentBy %></p>
+                <p><strong>Amount:</strong> $<%= indGig.amount %></p>
+                <br>
+                <p class="p-date"><strong>Last Updated:</strong> <%= indGig.lastUpdated %></p>
+              </section>
+            <% } %>
+        </article>
+      </div>
     </main>
 
     <footer>

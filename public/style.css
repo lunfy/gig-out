@@ -65,3 +65,9 @@ body, html {
 #profile {
     display: block;
 }
+
+.posted-gigs {
+    border-style: solid;
+    margin: 2em;
+    width: 50%
+}

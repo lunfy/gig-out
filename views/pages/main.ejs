@@ -11,23 +11,24 @@
     </header>
 
     <main>
+      <div id="art">
+        <article class="main-art">
+          <% if (postings) { %>
+            <% for (let i=0; i<postings.length; i++) { %>
+              <section class="section posting mb-5">
+                <h2 class="title"><a href='/gigs/<%= postings[i]._id %>'> <%= postings[i].title %> </a></h2>
+                <p>Poster: <%= postings[i].authorFname %> <%= postings[i].authorLname %> </p>
+                <br>
+                <p><%= postings[i].messageBody %></p>
+                <br>
+                <p class="p-date"><%= postings[i].datePosted %></p>
+              </section>
+            <% } %>
+          <% } %>
+        </article>
 
-       <article class="main-art">
-        <% if (postings) { %>
-          <% for (let i=0; i<postings.length; i++) { %>
-            <section class="section posting mb-5">
-              <h2 class="title"><a href='/gigs/<%= postings[i]._id %>'> <%= postings[i].title %> </a></h2>
-              <p>Poster: <%= postings[i].authorFname %> <%= postings[i].authorLname %> </p>
-              <br>
-              <p><%= postings[i].messageBody %></p>
-              <br>
-              <p class="p-date"><%= postings[i].datePosted %></p>
-            </section>
-         <% } %>
-        <% } %>
-       </article>
-
-       <aside>...</aside>
+        <aside>...</aside>
+      </div>
         
     </main>
 

@@ -64,7 +64,7 @@
                 <br>
 
                 <div class="field is-grouped">
-                    <button class="button is-dark mr-2" onclick="">Edit</button>
+                    <a href="/gigs/edit?id=<%= item._id %>"><button class="button is-dark mr-2">Edit</button></a>
 
                     <form method="POST" action="/profile/<%= item._id %>?_method=DELETE">
                         <button class="button is-danger" type="submit">Delete</button>

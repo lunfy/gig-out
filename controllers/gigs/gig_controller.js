@@ -74,6 +74,43 @@ module.exports = {
         })
     },
 
+    editGig: async (req,res) => {
+        const gigId = req.query.id
+        const foundGig = await Gig.findById(gigId)
+
+        res.render('pages/edit_gig', {
+            foundGig
+        })
+    },
+
+    updateGig: async (req,res) => {
+        const gigId = req.params.id
+        const foundGig = await Gig.findById(gigId)
+
+        console.log(gigId,foundGig)
+
+        const validationResults = gigValidators.newGigValidator.validate(req.body)
+
+        if (validationResults.error) {
+            res.render('pages/edit_gig', {
+                errMsg: validationResults.error.details[0].message,
+                foundGig
+            })
+            console.log('Joi error: '+validationResults.error.details[0].message)
+            return
+        }
+
+        const validatedResults = validationResults.value
+
+        await Gig.findByIdAndUpdate(gigId, validatedResults)
+
+        const updateId = await { _id: foundGig._id }
+        const lastUpdate = await { lastUpdated: new Date() }
+        await Gig.findOneAndUpdate(updateId, lastUpdate, {upsert: true})
+
+        res.redirect(`/gigs/${gigId}`)
+    },
+
     deleteGig: async (req,res) => {
         const id = req.params.id
         const user = res.locals.authUser

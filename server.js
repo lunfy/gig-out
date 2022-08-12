@@ -50,6 +50,8 @@ app.delete('/profile/:id', gigController.deleteGig)
 app.delete('/profile', userController.deleteAccount)
 
 app.get('/gigs', authMiddleware.isAuthenticated, pagesController.showGigs)
+app.put('/gigs/edit/:id', authMiddleware.isAuthenticated, gigController.updateGig)
+app.get('/gigs/edit', authMiddleware.isAuthenticated, gigController.editGig)
 app.get('/gigs/:id', authMiddleware.isAuthenticated, gigController.showIndGig)
 
 app.get('/newgig', authMiddleware.isAuthenticated, gigController.showNewGigForm)
